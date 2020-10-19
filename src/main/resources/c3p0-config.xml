@@ -4,7 +4,7 @@
         <property name="user">root</property>
         <property name="password">123456</property>
         <property name="driverClass">com.mysql.jdbc.Driver</property>
-        <property name="jdbcUrl">jdbc:mysql://localhost:3306/java?useUnicode=true&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306///chatroom</property>
         <!-- 以上的user是数据库的用户，
             password是数据库的密码，driverClass是mysql的数据库驱动，
             jdbcUrl是连接数据库的url -->
