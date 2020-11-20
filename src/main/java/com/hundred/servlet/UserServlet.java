@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class UserServlet extends BaseServlet {
 
-    public String login(HttpServletResponse res, HttpServletRequest req){
+    public String login(HttpServletRequest req,HttpServletResponse res){
         //接收参数
         Map<String,String[]> userMap = req.getParameterMap();
         //封装参数
@@ -26,10 +26,9 @@ public class UserServlet extends BaseServlet {
                 req.setAttribute("msg","用户名密码错误！");
                 return "/index.jsp";
             }else{
-                //销毁session
-                req.getSession().invalidate();
                 //重定向页面
-                res.sendRedirect(req.getContextPath()+"/mian.jsp");
+                res.sendRedirect(req.getContextPath()+"/main.jsp");
+                return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
