@@ -1,6 +1,11 @@
 package com.hundred.vo;
 
-public class User {
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+import java.util.Map;
+
+public class User implements HttpSessionBindingListener{
 
     private Integer id;
     private String username;
@@ -47,5 +52,22 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent httpSessionBindingEvent) {
+        //每当存入一个对象在session里面的时候，自动存入一个对象到人员列表UserMap里面
+        System.out.println("进来了。。。");
+        HttpSession session = httpSessionBindingEvent.getSession();
+        Map<User,HttpSession> map = (Map<User,HttpSession>)session.getAttribute("userMap");
+        map.put(this,session);
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent httpSessionBindingEvent) {
+        System.out.println("退出了。。。");
+        HttpSession session = httpSessionBindingEvent.getSession();
+        Map<User,HttpSession> map = (Map<User,HttpSession>)session.getAttribute("userMap");
+        map.remove(this);
     }
 }
