@@ -59,7 +59,8 @@ public class User implements HttpSessionBindingListener{
         //每当存入一个对象在session里面的时候，自动存入一个对象到人员列表UserMap里面
         System.out.println("进来了。。。");
         HttpSession session = httpSessionBindingEvent.getSession();
-        Map<User,HttpSession> map = (Map<User,HttpSession>)session.getAttribute("userMap");
+        Map<User,HttpSession> map = (Map<User,HttpSession>)session.getServletContext()
+                .getAttribute("userMap");
         map.put(this,session);
     }
 
@@ -67,7 +68,8 @@ public class User implements HttpSessionBindingListener{
     public void valueUnbound(HttpSessionBindingEvent httpSessionBindingEvent) {
         System.out.println("退出了。。。");
         HttpSession session = httpSessionBindingEvent.getSession();
-        Map<User,HttpSession> map = (Map<User,HttpSession>)session.getAttribute("userMap");
+        Map<User,HttpSession> map = (Map<User,HttpSession>)session.getServletContext()
+                .getAttribute("userMap");
         map.remove(this);
     }
 }
