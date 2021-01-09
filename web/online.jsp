@@ -18,7 +18,6 @@
     	<c:if test="${ existUser.type == 'admin' and entry.key.type != 'admin'}">
 			<a href="${ pageContext.request.contextPath }/user?method=kick&id=${ entry.key.id }">踢下线</a>
 		</c:if>
-		
 	</td>
   </tr>
 </c:forEach>

@@ -28,7 +28,7 @@ public class UserServlet extends BaseServlet {
                 return "/index.jsp";
             }else{
                 //1.销毁上一个登录用户的session
-//                req.getSession().invalidate();
+                req.getSession().invalidate();
                 //2.判断Map里是否有相同的用户,有则销毁
                 Map<User,HttpSession> contextMap = (Map<User,HttpSession>)getServletContext().
                         getAttribute("userMap");
